@@ -1,0 +1,17 @@
+{
+  "name": "my-api",
+  "version": "1.0.0",
+  "description": "This is api for all",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shubham jadhav",
+  "license": "ISC",
+  "dependencies": {
+    "corre": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13"
+  }
+}

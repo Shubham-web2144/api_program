@@ -11,7 +11,7 @@ const PORT = 9000 || process.env.PORT;
 const url = `mongodb+srv://Admin:admin@cluster0.bgtqc.mongodb.net/programs?retryWrites=true&w=majority`;
 
 mongoose.connect(
-  url,
+  process.env.MONGODB_URI || url,
   { useUnifiedTopology: true, useNewUrlParser: true },
   (err) => {
     if (err) {
@@ -49,47 +49,41 @@ app.get("/v3", (req, res) => {
     }
   });
 });
-const c = 'c' || 'C';
-const java = 'java' || 'Java';
-const js = 'js' || 'Javascript' || 'javascript';
+const c = "c" || "C";
+const java = "java" || "Java";
+const js = "js" || "Javascript" || "javascript";
 
 const name = "print-1";
 
-
 app.get(`/category=${c}`, (req, res) => {
-  data.find({ category: c} , (err, data) => {
-      if(err){
-          res.status(500).send("Data not found", err);
-      }
-      else{
-          res.status(200).send(data);
-      }
+  data.find({ category: c }, (err, data) => {
+    if (err) {
+      res.status(500).send("Data not found", err);
+    } else {
+      res.status(200).send(data);
+    }
   });
 });
 
 app.get(`/category=${java}`, (req, res) => {
-    data.find({ category: java } , (err, data) => {
-        if(err){
-            res.status(500).send("Data not found", err);
-        }
-        else{
-            res.status(200).send(data);
-        }
-    });
+  data.find({ category: java }, (err, data) => {
+    if (err) {
+      res.status(500).send("Data not found", err);
+    } else {
+      res.status(200).send(data);
+    }
   });
+});
 
-  
-  app.get(`/category=${js}=${name}`, (req, res) => {
-    data.find({ category: js , title: name} , (err, data) => {
-        if(err){
-            res.status(500).send("Data not found", err);
-        }
-        else{
-            res.status(200).send(data);
-        }
-    });
+app.get(`/category=${js}=${name}`, (req, res) => {
+  data.find({ category: js, title: name }, (err, data) => {
+    if (err) {
+      res.status(500).send("Data not found", err);
+    } else {
+      res.status(200).send(data);
+    }
   });
-  
+});
 
 // a listener
 app.listen(PORT, () => {

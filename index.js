@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(cors());
 
 // app endpoints
-app.get("/v1", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).send("hello");
 });
 
